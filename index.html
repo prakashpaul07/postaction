@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-image: url("https://cdn.pixabay.com/photo/2020/04/16/11/13/background-5050213_1280.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			padding-top: 17%;
+		}
+		input::placeholder{
+			text-align: center;
+			font-weight: bold;
+		}
+		.parent{
+			padding: 0.4%;
+			text-align: center;
+			font-weight: bold;
+			margin: auto;
+		}
+		#btn{
+			padding: 0.4%;
+			border: 1px solid black;
+			font-size: 1em;
+			background-color: black;
+			color: white;
+		}
+		#btn:hover{
+			background-color: white;
+			color: black;
+		}
+		.foot{
+			padding-top: 2%;
+		}
+
+	</style>
+	<script type="text/javascript">
+		
+	function demo(){
+		let data=document.getElementById("data").value
+		const pass=document.getElementById("pass").value
+		fetch("http://localhost:4000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:data,password:pass,age:20})
+		})
+	}
+	</script>
+</head>
+<body>	
+	<div class="parent">
+		<h1 id="head">LOGIN FORM</h1>
+		<input type="" placeholder="username" id="data">
+		<p><input type="password" placeholder="password" id="pass"></p>
+		<button onclick="demo()" id="btn">submit</button>
+		<footer class="foot">
+			<marquee width="35%" direction="right">
+			<p style="color: red;font-weight: bold;font-size: 1.3rem;">everyone should login carefully</p>
+		</marquee>
+		</footer>
+	</div>
+
+</body>
+</html>
