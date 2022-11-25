@@ -36,6 +36,9 @@
 		.foot{
 			padding-top: 2%;
 		}
+		#cars{
+			background-color: skyblue;
+		}
 
 	</style>
 	<script type="text/javascript">
@@ -43,12 +46,28 @@
 	function demo(){
 		let data=document.getElementById("data").value
 		const pass=document.getElementById("pass").value
+		var cars=document.getElementById("cars").value
+		console.log(cars)
+		var gmale=document.getElementById("male").checked
+		var gfemale=document.getElementById("female").checked
+		if(gmale==true) var gender="male"
+		else var gender="female"
+		console.log(gmale,gfemale)
+		
 		fetch("http://localhost:4000/newData",{
 			method:"POST",
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:data,password:pass,age:20})
+			body:JSON.stringify({name:data,password:pass,age:20,select:cars,gender:gender})
+		})
+		.then((res)=>{
+			console.log(res)
+			if(res.status===200)
+				alert("data submitted")
+		})
+		.catch((err)=>{
+			console.log("API created")
 		})
 	}
 	</script>
@@ -58,6 +77,16 @@
 		<h1 id="head">LOGIN FORM</h1>
 		<input type="" placeholder="username" id="data">
 		<p><input type="password" placeholder="password" id="pass"></p>
+		<label for="cars">Choose a car:</label>
+		<select name="cars" id="cars">
+		  <option value="volvo">Volvo</option>
+		  <option value="saab">Saab</option>
+		  <option value="mercedes">Mercedes</option>
+		  <option value="audi">Audi</option>
+		</select><br/><br/>
+		<div>
+		<p><input type="radio" name="Gender" id="male" value="male" >Male
+			<input type="radio" name="Gender" id="female" value="female">Female</p></div>
 		<button onclick="demo()" id="btn">submit</button>
 		<footer class="foot">
 			<marquee width="35%" direction="right">

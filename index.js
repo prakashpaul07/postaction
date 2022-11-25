@@ -19,8 +19,9 @@ app.get("/",(req,res)=>{
 
 app.post("/newData",(req,res)=>{
 	//console.log(req.body)
-	const {name,age,password}=req.body
-	console.log(name,password,age,"values")
+	const {name,age,password,select,gender}=req.body
+	console.log(name,password,age,select,gender,"values")
+	res.send("data submitted")
 })
 
 
